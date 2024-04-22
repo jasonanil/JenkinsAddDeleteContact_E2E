@@ -184,7 +184,5 @@ public class AddContactStepDefs {
          assertTrue(response.asString().equals("Contact deleted"));
       }
 
-
-
     }
 }

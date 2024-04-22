@@ -6,20 +6,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-
         plugin = {//report plugins
-                "pretty",//konsola renkli log yapar
-                "html:target/reports/html-reports/default-cucumber-reports.html",//html formatinda rapor almak icin kullanilan plugin
-                "json:target/reports/json-reports/cucumber1.json",//json formatinda rapor almak icin kullanilan plugin
-                "junit:target/reports/xml-reports/cucumber1.xml",//xml formatinda rapor almak icin kullanilan plugin
+                "pretty",//prints colored logs to the console
+                "html:target/reports/html-reports/default-cucumber-reports.html",//plugin used to generate reports in html format
+                "json:target/reports/json-reports/cucumber1.json",//plugin used to generate reports in json format
+                "junit:target/reports/xml-reports/cucumber1.xml",//plugin used to generate reports in xml format
                 "rerun:target/failedRerun.txt",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" //Spark peport için
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" //For Spark report
         },
-        monochrome = false,//Konsol çıktılarını daha düzenli yazdırır
         features = "src/test/resources/features",
         glue = "stepdefinitions",
         tags = "@AddContact",
-        dryRun = false // 'dryRun = true' ==>Eksik step definition olup olmadığını kontrol eder. Testi çalıştırmaz.
-
+        dryRun = false // 'dryRun = true' ==> Checks for missing step definitions without running the test.
 )
 public class Runner {}

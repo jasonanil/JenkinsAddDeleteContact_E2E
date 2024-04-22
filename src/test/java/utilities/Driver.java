@@ -9,15 +9,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public class Driver {
-    //Singleton driver class
+    // Singleton driver class
 
     private static WebDriver driver;
 
-    private Driver() {}// new keyword'u ile bu classtan obje oluşturulmasının önüne geçilir.
+    private Driver() {} // Prevents instantiation of this class with the new keyword.
 
     public static WebDriver getDriver() {
 
-        if (driver == null) {//Driver daha önce oluşturulmamış ise
+        if (driver == null) { // If the driver has not been created before
 
             String browser = ConfigReader.getProperty("browser");
 
@@ -48,7 +48,7 @@ public class Driver {
     }
 
     public static void closeDriver() {
-        if (driver != null) {//Driver daha önce kapatılmamışsa
+        if (driver != null) { // If the driver has not been closed before
 
             try {
                 Thread.sleep(3000);
@@ -57,24 +57,7 @@ public class Driver {
             }
 
             driver.quit();
-            driver = null;//Kapanan drivera null ataması yaparak getDriver methodu ile tekrar çağrılabilmesini sağlıyoruz
+            driver = null; // Set the closed driver to null to allow it to be called again with the getDriver method
         }
     }
 }
-
-/*
-Kullanılan Driver Class, tüm sınıflarda paylaşılan tek bir statik driver döndürür.
-Driver Class, Framework’deki tüm class’larda aynı driver objesini kullanmamıza izin verecektir.
-Singleton Driver class başlatıldığında, bu Driver class tekrar tekrar aynı driver örneğini return eder.
-
-Singleton Pattern: Tekli kullanım, yalnızca örneği olabilecek şekilde geliştirilir, Singleton Driver kullanıcıyı WebDriver'ın
-gerekli olduğu tüm örnekler için aynı objeyi kullanmaya zorlayacaktır işte tam da bu yüzden Singleton Pattern bir
-classın farklı class’larda obje oluşturularak kullanımını engellemek için kullanılır.
-Amaç burada; Driver class’ındaki getDriver() method’unun obje oluşturularak kullanılmasını engellemektir.
-
-Singleton sınıfı oluşturmak için aşağıdaki adımları uygulamamız gerekiyor:
-Class’ta oluşturulan constructor private olmalı böylece farklı classlarda obje oluşturulamaz.
-Class’da statik bir referans variable olmalı; her yerden kullanılabilir hale getirmek için static gereklidir.
-Class’ın bir kez başlatılıp başlatılmadığını kontrol etmesi gereken, class’ın objesi olarak return type static bir method
-declare edilmelidir.
- */

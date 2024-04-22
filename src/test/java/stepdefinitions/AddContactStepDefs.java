@@ -15,8 +15,6 @@ import java.util.List;
 
 import static base_urls.ContactListBaseUrl.spec;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.sessionId;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -178,11 +176,11 @@ public class AddContactStepDefs {
     @And("delete the contact")
     public void deleteTheContact() {
 
-      List<String> contactIdList = response.jsonPath().getList("_id");
-      for (String contactId : contactIdList){
-         response = given(spec).delete("contacts/"+contactId);
-         assertTrue(response.asString().equals("Contact deleted"));
-      }
+        List<String> contactIdList = response.jsonPath().getList("_id");
+        for (String contactId : contactIdList) {
+            response = given(spec).delete("contacts/" + contactId);
+            assertTrue(response.asString().equals("Contact deleted"));
+        }
 
     }
 }

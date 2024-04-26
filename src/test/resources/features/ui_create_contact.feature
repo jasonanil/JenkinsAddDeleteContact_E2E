@@ -4,8 +4,8 @@ Feature: Adding a New Contact
   Scenario Outline: Add contact e2e
 
     Given user goes to "https://thinking-tester-contact-list.herokuapp.com/"
-    When user enters email as "johndoe14@gmail.com"
-    And user enters password as "John.123"
+    When user enters email as "jasonsteel@gmail.com"
+    And user enters password as "Jason.123"
     And user clicks on Submit button
     And user clicks on Add a New Contact button
     And user enters First Name as "<First Name>"

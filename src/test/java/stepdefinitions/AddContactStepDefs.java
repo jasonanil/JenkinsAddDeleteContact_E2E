@@ -181,8 +181,5 @@ public class AddContactStepDefs {
             response = given(spec).delete("contacts/" + contactId);
             assertTrue(response.asString().equals("Contact deleted"));
         }
-
-        assert false;
-
     }
 }

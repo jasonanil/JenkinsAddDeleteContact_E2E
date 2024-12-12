@@ -6,7 +6,8 @@ pipeline {
                 script {
                     try {
                         // Execute Test
-                        sh 'mvn test'
+                        bat 'mvn test'
+                        //sh 'mvn test'
                     } catch (Exception e) {
                         // Find assertion failure make build UNSTABLE
                         currentBuild.result = 'UNSTABLE'
